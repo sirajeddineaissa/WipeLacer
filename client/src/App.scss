@@ -1,3 +1,5 @@
+@import 'config';
+
 *{
   margin: 0; 
   padding: 0;
@@ -6,7 +8,8 @@
 
 body {
   font-family: sans-serif;
-  background:rgb(39, 38, 39) ; 
+  background:$background-color ; 
+  color :white;
 }
 
 a{
@@ -17,7 +20,14 @@ a{
 button{
   background: inherit; 
   border: none; 
+  color :inherit;
   &:focus{
     outline :none;
   }
+}
+
+.App{
+  border: solid black 1px;
+  width: 1000px;
+  height: 700px;
 }
