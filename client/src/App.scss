@@ -1,0 +1,23 @@
+*{
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background:rgb(39, 38, 39) ; 
+}
+
+a{
+  color: inherit ;
+  text-decoration: none;
+}
+
+button{
+  background: inherit; 
+  border: none; 
+  &:focus{
+    outline :none;
+  }
+}
