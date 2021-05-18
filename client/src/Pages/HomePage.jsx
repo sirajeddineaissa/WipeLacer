@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from '../Components/NavBar'
 import KeyboardSvg from '../Components/KeyboardSvg'
 import MyLi from '../Components/MyLi'
-import '../styles/HomePage.scss'
+import {NavLink} from 'react-router-dom'
 
 
 function HomePage(){
@@ -12,10 +12,10 @@ function HomePage(){
             <div className="main">
                 <KeyboardSvg/>
                 <ul>
-                    <MyLi>Start</MyLi>
-                    <MyLi>Practice</MyLi>
-                    <MyLi>Profile</MyLi>
-                    <MyLi>Settings</MyLi>
+                    <NavLink to="/start" exact activeClassName="active"><MyLi>Start</MyLi> </NavLink>
+                    <NavLink to="/practice" exact activeClassName="active"><MyLi>Practice</MyLi> </NavLink>
+                    <NavLink to="/profile" exact activeClassName="active"><MyLi>Profile</MyLi> </NavLink>
+                    <NavLink to="/settings" exact activeClassName="active"><MyLi>Settings</MyLi> </NavLink>
                 </ul>
             </div>
         </div>

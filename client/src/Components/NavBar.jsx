@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/NavBar.scss'
 import {useHover} from '../customHooks'
 import {animated} from 'react-spring'
 
