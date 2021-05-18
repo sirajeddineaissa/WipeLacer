@@ -1,12 +1,21 @@
 .main{
-    margin-top:88px;
+    
     display:flex; 
     justify-content: space-around;
     align-items:center;
+    
+    flex:1;
+    &>*{
+        transform: translateY(-30px)
+    }
+    
 
     ul{
         list-style:none;
         perspective: 1000px;
+        
+        
+
         li{
             margin-bottom: 8px;
             -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.37); 
@@ -16,10 +25,11 @@
             transform-style: preserve-3d;
             transform-origin: right; 
             
-
             &:last-of-type{
-                margin-bottom: 0;
+                margin-bottom:0px;
             }
+            
+            
 
             .line{
                 width: 100% ; 
@@ -29,10 +39,18 @@
             a{
                 display:block;
                 position: relative; 
-                padding: 13px 105px;
+                padding: 7px 52px;
                 font-size: 24px;
                 cursor:pointer;
             }
+        }
+    }
+}
+
+@media(max-width:600px){
+    .main{
+        &>svg{
+            display:none;
         }
     }
 }

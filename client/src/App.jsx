@@ -1,11 +1,11 @@
 import './App.scss';
 import HomePage from './Pages/HomePage';
-import {BrowserRouter,Switch,Route} from 'react-router-dom'
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import PracticePage from './Pages/PracticePage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
     <Switch>
     <div className="App">
       <Route path="/" exact>
@@ -16,7 +16,7 @@ function App() {
       </Route>
     </div>
     </Switch>
-    </BrowserRouter>
+    </Router>
   );
 }
 
