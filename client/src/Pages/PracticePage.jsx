@@ -7,8 +7,8 @@ const PracticePage = () => {
     }, [countDown]);
 
     return (
-        <div class="practice">
-            <h1 class ="countdown">{countDown}</h1>
+        <div className="practice">
+            <h1 className ="countdown">{countDown}</h1>
             <textarea ></textarea>
         </div>
     );

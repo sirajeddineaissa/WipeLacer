@@ -6,6 +6,8 @@ import {NavLink} from 'react-router-dom'
 
 
 function HomePage(){
+    
+    
     return (
         <div>
             <NavBar />

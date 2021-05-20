@@ -1,71 +1,15 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router";
+import keyboardAnimations from '../functions/keyboardAnimations'
 
 const KeyboardSvg = () => {
+  const location = useLocation();
   useEffect(() => {
-    let i = 0;
-    let j=0;
-    let k=17;
-    let f=17;
-
-    setInterval(() => {
-      i = (i + 1) % 17;
-      if (i === 0) i++;
-      document
-        .querySelector(`#toPress >path:nth-of-type(${i})`)
-        .classList.add("current");
-      setTimeout(function () {
-        document
-          .querySelector(`#toPress >path:nth-of-type(${i})`)
-          .classList.remove("current");
-      }, 150);
-    }, 300);
-
-    setInterval(() => {
-      j = (j + 1) % 17;
-      if (j === 0) j++;
-      document
-        .querySelector(`#toPress >path:nth-of-type(${j})`)
-        .classList.add("current");
-      setTimeout(function () {
-        document
-          .querySelector(`#toPress >path:nth-of-type(${j})`)
-          .classList.remove("current");
-      }, 200);
-    }, 400);
-
-    setInterval(() => {
-      k = k-1;
-      if (k === 0) k=16;
-      document
-        .querySelector(`#toPress >path:nth-of-type(${k})`)
-        .classList.add("current");
-      setTimeout(function () {
-        document
-          .querySelector(`#toPress >path:nth-of-type(${k})`)
-          .classList.remove("current");
-      }, 300);
-    }, 600);
-
-    setInterval(() => {
-      f = f-1;
-      if (f === 0) f=16;
-      document
-        .querySelector(`#toPress >path:nth-of-type(${f})`)
-        .classList.add("current");
-      setTimeout(function () {
-        document
-          .querySelector(`#toPress >path:nth-of-type(${f})`)
-          .classList.remove("current");
-      }, 150);
-    }, 300);
-
-    
-    setInterval(()=>{
-      document.querySelector("path#space").classList.add('current')
-      setTimeout(()=>{
-        document.querySelector("path#space").classList.remove('current')
-      },300)
-    },2000)
+    try {
+      keyboardAnimations();
+    } catch (error) {
+      console.log(error)
+    }
 
   }, []);
 

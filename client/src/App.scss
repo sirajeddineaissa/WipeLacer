@@ -29,6 +29,12 @@ button{
   }
 }
 
+.line{
+  width: 100% ; 
+  height:2px;
+  background: white;
+}
+
 .App{
   min-height: 100vh;
   &>div{
