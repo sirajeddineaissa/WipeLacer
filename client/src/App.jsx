@@ -4,7 +4,9 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import PracticePage from './Pages/PracticePage';
 import SettingsPage from './Pages/SettingsPage'
 import Signup from './Pages/Signup';
-import { Component } from 'react';
+import { Component, useEffect } from 'react';
+
+import { AuthProvider } from "./contexts/AuthContext";
 
 
 const routes = [
@@ -15,18 +17,22 @@ const routes = [
 ]
 
 function App() {
+
   return (
-    <Router>
-    <Switch>
-    <div className="App">
-      {routes.map(({path, Component})=>(
-        <Route path={path} exact>
-          <Component/>
-        </Route>
-      ))}
-    </div>
-    </Switch>
-    </Router>
+    <AuthProvider>
+      <Router>
+      <Switch>
+      <div className="App">
+        {routes.map(({name, path, Component})=>(
+          <Route path={path} exact key={name}>
+            <Component/>
+          </Route>
+        ))}
+      </div>
+      </Switch>
+      </Router>
+    </AuthProvider>
+   
   );
 }
 
