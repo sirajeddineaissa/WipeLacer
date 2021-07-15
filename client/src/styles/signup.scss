@@ -13,6 +13,7 @@
         border: solid 3px white; 
         padding: 40px;
         border-radius: 20px;
+        row-gap: 15px;
 
         input{
             border: none;
@@ -28,7 +29,6 @@
 
 
         button{
-            margin-top: 20px;
             font-size: 0.9em;
             &:hover{
                 color: $background-color;
