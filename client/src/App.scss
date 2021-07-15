@@ -1,8 +1,7 @@
 @import 'config';
-@import './styles/HomePage';
-@import './styles/keyboardStyle';
-@import './styles/NavBar';
-@import './styles/Practice';
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap');
+
+
 *{
   margin: 0; 
   padding: 0;
@@ -10,7 +9,7 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Cairo';
   background:$background-color ; 
   color :white;
 }
@@ -44,3 +43,27 @@ button{
 
   }
 }
+
+.contained{
+  width: 90%;
+  max-width: 1200px; 
+  margin: 0 auto;
+}
+
+
+button {
+  font-size: 1em;
+  padding: 10px 40px;
+  border: 3px solid white; 
+  border-radius: 10px;
+  background-color:rgba($color: #C4C4C4, $alpha: 0.24);
+}
+
+
+@import './styles/HomePage';
+@import './styles/keyboardStyle';
+@import './styles/NavBar';
+@import './styles/Practice';
+
+
+

@@ -1,6 +1,7 @@
 import React from 'react';
 import {useHover} from '../customHooks'
 import {animated} from 'react-spring'
+import {Link} from 'react-router-dom'
 
 const NavBar = () => {
 
@@ -8,20 +9,25 @@ const NavBar = () => {
         backgroundFrom:'#282C34',backgroundTo:'white'
     })
 
+    const AnimatedLink = animated(Link);
+
     return (
         <div className="NavBar">
+            <div className="contained">
             <h1 className="logo">
                 WipeLacer
             </h1>
-            <animated.a style={animation}
+            <AnimatedLink style={animation}
                 onMouseOver={()=>{setHovered(true)}}
                 onMouseOut={()=>{setHovered(false)}}
+                to="/signup"
             >
                 Sign up
-            </animated.a>
+            </AnimatedLink>
             {/* <button >
                 {username}
             </button> */}
+            </div>
         </div>
     );
 }

@@ -1,1 +1,8 @@
 $background-color: #282C34;
+
+@mixin flexed($direction,$justify,$align){
+    display: flex; 
+    flex-direction:$direction ;
+    align-items: $align;
+    justify-content: $justify;
+}
