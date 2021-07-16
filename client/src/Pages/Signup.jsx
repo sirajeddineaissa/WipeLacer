@@ -1,6 +1,8 @@
 import React, { useRef,useState } from 'react'
 import '../styles/signup.scss'
 
+import { useHistory } from "react-router-dom";
+
 import { animated } from "react-spring";
 import { useHover } from "../customHooks";
 
@@ -8,19 +10,24 @@ import { useAuth } from "../contexts/AuthContext";
 
 export default function Signup() {
 
+    //refs for inputs
     const emailRef = useRef(null);
     const passRef = useRef(null) ;
     
+    //auth signup and history
+    const history= useHistory()
     const { signup } = useAuth()
 
+    const [loading, setLoading] = useState(false);
+
+    //states
     const [signupResult, setsignupResult] = useState({
-        message:'initial message',
+        message:'initial state',
         color:'',
     });
 
-    const [loading, setLoading] = useState(false);
     
-    
+    //onclicking sign up button
     const handleSubmit = async (e)=>{
         e.preventDefault() ;
         try{
@@ -28,20 +35,18 @@ export default function Signup() {
             setLoading(true)
             await signup(emailRef.current.value , passRef.current.value) ;
             setLoading(false);
-            setsignupResult({
-                message:'your account is created',
-                color: 'green'
-            })
+            history.push('/');
         }
         catch(e){
+            setLoading(false);
             setsignupResult({
                 message:'there has been an error',
                 color: 'red'
             })
-            setLoading(false);
         }
     }
 
+    //animaiton hooks
     const [animation, setHover] = useHover({
         backgroundTo: 'white',backgroundFrom:'#282C34'
     });

@@ -4,7 +4,7 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import PracticePage from './Pages/PracticePage';
 import SettingsPage from './Pages/SettingsPage'
 import Signup from './Pages/Signup';
-import { Component, useEffect } from 'react';
+
 
 import { AuthProvider } from "./contexts/AuthContext";
 

@@ -18,6 +18,12 @@
         font-size: 2.4em;
     }
 
+
+    button { 
+        &:hover {
+            color: $background-color;
+        }
+    }
     a{
         border-radius:40px; 
         border:4px solid white; 
