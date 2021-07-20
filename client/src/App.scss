@@ -51,6 +51,9 @@ button{
   margin: 0 auto;
 }
 
+::selection {
+  color: blue;
+}
 
 button {
   font-size: 1em;

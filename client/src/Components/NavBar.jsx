@@ -3,6 +3,9 @@ import {useHover} from '../customHooks'
 import {animated} from 'react-spring'
 import {Link} from 'react-router-dom'
 import { useAuth } from "../contexts/AuthContext";
+import UserBar from './UserBar'
+
+import logo from '../images/wipeLacer.png'
 
 const NavBar = () => {
 
@@ -16,33 +19,31 @@ const NavBar = () => {
     const [animation , setHovered]=useHover({
         backgroundFrom:'#282C34',backgroundTo:'white'
     })
+    const [animation2, setHovered2] = useHover({
+        backgroundFrom:'#282C34',backgroundTo:'white'
+    })
 
     const AnimatedLink = animated(Link);
 
     return (
         <div className="NavBar">
             <div className="contained">
-            <h1 className="logo">
-                WipeLacer
-            </h1>
-
+            <img src={logo} alt="logo" height="70" />
             {currentUser?
                 (
-                    <div style={{display : 'flex', columnGap: '20px' , alignItems:'center'}}>
-                        <h2>
-                            {currentUser.email}
-                        </h2>
-                        <animated.button style={animation}
-                            onMouseOver={()=>{setHovered(true)}}
-                            onMouseOut={()=>{setHovered(false)}}
-                            onClick={handleLogOut}
-                        >
-                            Log out 
-                        </animated.button>
-                    </div>
+                    <UserBar user={currentUser} handleLogOut={handleLogOut}/>
                 )
               : 
                 (
+                    <div style={{display: 'flex', alignItems:'center', columnGap: '20px'}}>
+                    <AnimatedLink
+                        style={animation2}
+                        onMouseOver={()=>{setHovered2(true)}}
+                        onMouseOut={()=>{setHovered2(false)}}
+                        to='/login'
+                    >
+                        Log In
+                    </AnimatedLink>
                     <AnimatedLink style={animation}
                         onMouseOver={()=>{setHovered(true)}}
                         onMouseOut={()=>{setHovered(false)}}
@@ -50,6 +51,7 @@ const NavBar = () => {
                     >
                         Sign up
                     </AnimatedLink>
+                    </div>
                 )
             }
             

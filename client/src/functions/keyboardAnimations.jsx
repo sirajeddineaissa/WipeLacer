@@ -4,7 +4,7 @@ export default function keyboardAnimations(){
     let k=17;
     let f=17;
 
-    setInterval(() => {
+    const interval1 = setInterval(() => {
       i = (i + 1) % 17;
       if (i === 0) i++;
       
@@ -20,7 +20,7 @@ export default function keyboardAnimations(){
       }, 150);
     }, 300);
 
-    setInterval(() => {
+    const interval2 = setInterval(() => {
       j = (j + 1) % 17;
       if (j === 0) j++;
       try{
@@ -36,7 +36,7 @@ export default function keyboardAnimations(){
       }, 200);
     }, 400);
 
-    setInterval(() => {
+    const interval3 = setInterval(() => {
       k = k-1;
       if (k === 0) k=16;
       try{document
@@ -51,7 +51,7 @@ export default function keyboardAnimations(){
       }, 300);
     }, 600);
 
-    setInterval(() => {
+    const interval4= setInterval(() => {
       f = f-1;
       if (f === 0) f=16;
       try{document
@@ -69,10 +69,12 @@ export default function keyboardAnimations(){
     }, 300);
 
     
-    setInterval(()=>{
+    const interval5  = setInterval(()=>{
       try{document.querySelector("path#space").classList.add('current')}catch(err){}
       setTimeout(()=>{
         try{document.querySelector("path#space").classList.remove('current')}catch(err){}
       },300)
     },2000)
+
+    return [interval1, interval2, interval3, interval4, interval5]
 }

@@ -5,11 +5,12 @@ import keyboardAnimations from '../functions/keyboardAnimations'
 const KeyboardSvg = () => {
   const location = useLocation();
   useEffect(() => {
-    try {
-      keyboardAnimations();
-    } catch (error) {
-      console.log(error)
-    }
+    const intervals = keyboardAnimations();
+    return ()=>{
+      intervals.forEach(interval => {
+        clearInterval(interval);
+      })
+   }
 
   }, []);
 
