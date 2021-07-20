@@ -7,6 +7,7 @@ import Signup from './Pages/Signup';
 
 
 import { AuthProvider } from "./contexts/AuthContext";
+import Login from './Pages/Login';
 
 
 const routes = [
@@ -14,6 +15,7 @@ const routes = [
   {name: 'practice', path: '/practice', Component:PracticePage},
   {name: 'setting', path: '/settings', Component:SettingsPage},
   {name: 'sign up', path: '/signup', Component:Signup},
+  {name: 'login', path: '/login', Component:Login},
 ]
 
 function App() {

@@ -1,7 +1,8 @@
 import React, { useRef,useState } from 'react'
+
 import '../styles/signup.scss'
 
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 
 import { animated } from "react-spring";
 import { useHover } from "../customHooks";
@@ -13,6 +14,7 @@ export default function Signup() {
     //refs for inputs
     const emailRef = useRef(null);
     const passRef = useRef(null) ;
+    const repeatRef = useRef(null ) ; 
     
     //auth signup and history
     const history= useHistory()
@@ -22,7 +24,7 @@ export default function Signup() {
 
     //states
     const [signupResult, setsignupResult] = useState({
-        message:'initial state',
+        message:'',
         color:'',
     });
 
@@ -30,6 +32,14 @@ export default function Signup() {
     //onclicking sign up button
     const handleSubmit = async (e)=>{
         e.preventDefault() ;
+        console.log(emailRef.current.value, passRef.current.value)
+        if(repeatRef.current.value !== passRef.current.value){
+            setsignupResult({
+                message: 'passwords do not match',
+                color: 'red'
+            })
+            return ;
+        }
         try{
             console.log('submitting')
             setLoading(true)
@@ -58,6 +68,8 @@ export default function Signup() {
                 <input type="email" id="email" name="email" ref={emailRef} placeholder="---@---.com" required/>
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" id="password" ref={passRef} placeholder="*****" required/>
+                <label htmlFor="repeat">Repeat Password</label>
+                <input type="password" name="repeat" id="repeat" ref={repeatRef} placeholder="*****" required/>
                 <animated.button
                     style={animation}
                     onMouseOver={()=>{setHover(true)}}
@@ -68,6 +80,7 @@ export default function Signup() {
                 <div style={{color: signupResult.color,fontSize: '0.5em'}}>
                     {signupResult.message}
                 </div>
+                <p style={{fontSize: '0.8rem'}}>already have an account ? <Link to="/login" style={{color: 'lightblue'}}>Log In</Link></p>
             </form>
         </div>
     )
