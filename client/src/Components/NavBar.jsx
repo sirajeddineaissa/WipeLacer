@@ -28,14 +28,16 @@ const NavBar = () => {
     return (
         <div className="NavBar">
             <div className="contained">
+            <Link to="/">
             <img src={logo} alt="logo" height="70" />
+            </Link>
             {currentUser?
                 (
                     <UserBar user={currentUser} handleLogOut={handleLogOut}/>
                 )
               : 
                 (
-                    <div style={{display: 'flex', alignItems:'center', columnGap: '20px'}}>
+                    <div style={{display: 'flex', alignItems:'center', columnGap: '20px'}} className="buttons">
                     <AnimatedLink
                         style={animation2}
                         onMouseOver={()=>{setHovered2(true)}}
