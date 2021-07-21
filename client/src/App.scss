@@ -10,7 +10,9 @@
 
 body {
   font-family: 'Cairo';
-  background:$background-color ; 
+  background: rgb(62,63,64);
+  background: radial-gradient(circle, rgba(62,63,64,1) 1%, rgba(40,44,52,1) 100%);
+  background-size: 120% 100%;
   color :white;
   line-height: 1.9em;
 }
@@ -81,7 +83,7 @@ button {
         transform-origin : top ; 
         &.part1{
           transition-delay : 100ms;
-          background-color: $background-color;
+          background-color: lighten($background-color, 5);
         }
         &.part2{
           transition-delay : 200ms;
@@ -98,7 +100,7 @@ button {
 
 .page-enter{ 
   opacity: 0 ;
-  animation: showSuddenly 1ms 700ms;
+  animation: showSuddenly 1ms 800ms forwards;
   .transition-screen .part {
     transform: none ;
   }
