@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useHover } from '../customHooks';
 import { animated } from 'react-spring';
 import { useAuth } from '../contexts/AuthContext';
+import HomeButton  from '../Components/HomeButton';
 
 export default function Login() {
 
@@ -42,6 +43,7 @@ export default function Login() {
 
     return (
         <div className="sign-up">
+            <HomeButton/>
             <form>
                 <label htmlFor="email">E-mail</label>
                 <input type="email" id="email" name="email" ref={emailRef} placeholder="---@---.com" required/>

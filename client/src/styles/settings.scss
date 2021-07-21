@@ -1,0 +1,10 @@
+@import '../config';
+
+.settings{
+    font-size: 1.7rem;
+    .contained {
+        min-height: 100vh;
+        width: 70%;
+        @include flexed(column, center, stretch)
+    }
+}

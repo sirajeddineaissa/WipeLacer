@@ -1,5 +1,5 @@
 import React, { useRef,useState } from 'react'
-import NavBar from '../Components/NavBar';
+import HomeButton from '../Components/HomeButton';
 
 import '../styles/signup.scss'
 
@@ -64,7 +64,7 @@ export default function Signup() {
 
     return (
         <div className="sign-up">
-            <NavBar/>
+            <HomeButton/>
             <form>
                 <label htmlFor="email">E-mail</label>
                 <input type="email" id="email" name="email" ref={emailRef} placeholder="---@---.com" required/>

@@ -71,7 +71,7 @@ button {
   min-height: 100vh;
   .transition-screen{
     position: absolute; 
-    z-index: 1001;
+    z-index: 1005;
     width: 100%; 
     height: 100vh ; 
     display:flex; 
@@ -100,7 +100,7 @@ button {
 
 .page-enter{ 
   opacity: 0 ;
-  animation: showSuddenly 1ms 800ms forwards;
+  animation: showSuddenly 1ms 1300ms forwards;
   .transition-screen .part {
     transform: none ;
   }
@@ -116,7 +116,7 @@ button {
   .transition-screen .part {
     transform-origin : bottom; 
     transform: scaleY(0) ;
-    transition: transform 400ms ;
+    transition: transform 1000ms ;
   }
 }
 
@@ -129,7 +129,7 @@ button {
   
   .transition-screen .part {
     transform: none ;
-    transition: transform 500ms;
+    transition: transform 1000ms;
   }
 }
 

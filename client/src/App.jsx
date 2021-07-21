@@ -1,4 +1,5 @@
-import React,{useState} from 'react';
+import React from 'react';
+
 import './App.scss';
 import HomePage from './Pages/HomePage';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
@@ -11,7 +12,7 @@ import { CSSTransition } from "react-transition-group";
 
 import { AuthProvider } from "./contexts/AuthContext";
 import Login from './Pages/Login';
-
+import TransitionScreen from './Components/TransitionScreen';
 
 
 const routes = [
@@ -26,7 +27,6 @@ function App() {
 
   
 
-
   return (
     <AuthProvider>
     
@@ -38,16 +38,12 @@ function App() {
             {({match})=>(
               <CSSTransition
                 in={match != null}
-                timeout={1000}
+                timeout={1300}
                 classNames="page"
                 unmountOnExit
               >
                 <div className="page">
-                  <div className={`transition-screen`}>
-                    <div className="part part1"></div>
-                    <div className="part part2"></div>
-                    <div className="part part3"></div>
-                  </div>
+                  <TransitionScreen/>
                   <Component/>
                 </div>
               </CSSTransition>
