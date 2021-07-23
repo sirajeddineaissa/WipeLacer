@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 
 import { createContext,useContext } from "react";
-import { auth } from '../firebase';
+import { auth,db } from '../firebase';
 
 const AuthContext = createContext();
 
@@ -15,8 +15,27 @@ export function AuthProvider({children}) {
     const [currentUser, setcurrentUser] = useState();
     const [loading, setLoading] = useState(false);
 
+
+    function setUserSettings(settings){
+        if(!currentUser) return ; 
+        db.collection('users').doc(currentUser.uid).set({settings})
+    }
+
+    async function findUserCollection(){
+        if(!currentUser) return ; 
+        const userCollection =  await db.collection('users').doc(currentUser.uid).get();
+        return userCollection.data()
+    }
+
     function signup(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password);
+        auth.createUserWithEmailAndPassword(email, password).then(cred=>{
+            db.collection('users').doc(cred.user.uid).set({
+                settings:[
+                    {name:'punctuation',on: true},
+                    {name:'music',on: true},
+                ]
+            })
+        })
     }
 
     function login(email, password) {
@@ -29,7 +48,6 @@ export function AuthProvider({children}) {
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user=>{
-            console.log(user)
             setcurrentUser(user) ;
         })
         return unsubscribe;
@@ -40,7 +58,9 @@ export function AuthProvider({children}) {
         signup,
         setLoading,
         logout,
-        login
+        login,
+        findUserCollection,
+        setUserSettings
     }
     return (
         <AuthContext.Provider value={value}>
