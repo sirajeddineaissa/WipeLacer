@@ -1,0 +1,30 @@
+textarea {
+  width: 100vw;
+  max-width: 800px;
+  height: 500px;
+  padding: 45px;
+  row-gap: 15px;
+  background: inherit;
+  color: white;
+  font-size: 25px;
+  outline: none;
+  user-select: none;
+  border: none;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+.practice {
+  text-align: center;
+}
+.countdown {
+  margin: 20px 0;
+  word-spacing: 0.3em;
+  font-weight: 400;
+}
+.removeCountDown {
+  overflow: hidden;
+  visibility: hidden;
+  margin-top: 40px;
+}

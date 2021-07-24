@@ -3,13 +3,12 @@ import 'firebase/auth'
 import 'firebase/firestore'
 
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID,
-    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyD6XFhshyoLLCLvUqnscTDCo0X6rmSSY9U",
+  authDomain: "wipelacer-adb0e.firebaseapp.com",
+  projectId: "wipelacer-adb0e",
+  storageBucket: "wipelacer-adb0e.appspot.com",
+  messagingSenderId: "914182440059",
+  appId: "1:914182440059:web:52fa69d6e4b254c24b0ede"
 };
   // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);

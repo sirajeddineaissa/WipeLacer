@@ -28,6 +28,7 @@ export default function Login() {
             console.log('submitting')
             setLoading(true)
             await login(emailRef.current.value , passRef.current.value) ;
+            console.log("trueeee")
             setLoading(false);
             history.push('/');
         }
