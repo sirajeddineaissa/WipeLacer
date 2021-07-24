@@ -32,8 +32,8 @@ const PracticePage = () => {
     },[])
     return (
         <div className="practice">
-            <h1 className={`${countDown ? "countdown" : "removeCountDown"}`}>Practice starts in {countDown}</h1>    
-            <textarea>{quote}</textarea>
+            <h1 className={`${countDown ? "countdown" : "removeCountDown"}`}>Practice starts in {countDown}</h1> 
+            <textarea placeholder={quote} disabled></textarea>
         </div>
     );
 }

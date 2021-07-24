@@ -1,9 +1,8 @@
 textarea {
   width: 100vw;
-  max-width: 800px;
-  height: 500px;
-  padding: 45px;
-  row-gap: 15px;
+  max-width: 1080px;
+  height: 450px;
+  padding: 30px;
   background: inherit;
   color: white;
   font-size: 25px;
@@ -11,7 +10,12 @@ textarea {
   user-select: none;
   border: none;
 }
-
+@media screen and (max-width: 500px){
+  textarea{
+    font-size: 18px;
+    padding: 20px;
+  }
+}
 textarea::-webkit-scrollbar {
   display: none;
 }
