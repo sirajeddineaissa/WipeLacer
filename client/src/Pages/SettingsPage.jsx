@@ -3,6 +3,7 @@ import '../styles/settings.scss'
 
 import HomeButton from '../Components/HomeButton'
 import Parameter from '../Components/Parameter';
+import {useSound } from '../contexts/SoundContext'
 
 import {useHover} from '../customHooks'
 import { animated } from 'react-spring';
@@ -10,8 +11,10 @@ import { useAuth } from '../contexts/AuthContext';
 
 const SettingsPage = () => {
 
+
     const [disableButton, setDisableButton] = useState(true)
-    const {findUserCollection, currentUser,setUserSettings} = useAuth()
+    const {findUserCollection, currentUser,setUserSettings} = useAuth();
+    const {resetSoundStatus} = useSound();
     const [settings, setSettings] = useState([
         {name:'Punctuation', on:false},
         {name:'Music', on: false},
@@ -34,11 +37,13 @@ const SettingsPage = () => {
             })
             return succ;
         })
+        
     }
 
     const handleApply = ()=>{
         setDisableButton(true); 
         setUserSettings(settings);
+        resetSoundStatus();
     }
 
     const [animation, setHovered ] = useHover({

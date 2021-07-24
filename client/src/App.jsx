@@ -6,6 +6,9 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import PracticePage from './Pages/PracticePage';
 import SettingsPage from './Pages/SettingsPage'
 import Signup from './Pages/Signup';
+import SoundPlayer from './Components/SoundPlayer';
+import { SoundProvider } from './contexts/SoundContext';
+
 
 import { CSSTransition } from "react-transition-group";
 
@@ -25,11 +28,10 @@ const routes = [
 
 function App() {
 
-  
-
   return (
     <AuthProvider>
-    
+    <SoundProvider>
+      <SoundPlayer/>
       <Router>
       <Switch>
       <div className="App">
@@ -54,6 +56,7 @@ function App() {
       </div>
       </Switch>
       </Router>
+    </SoundProvider>
     </AuthProvider>
    
   );
