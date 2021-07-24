@@ -1,34 +1,47 @@
-textarea {
-  width: 100vw;
-  max-width: 1080px;
-  height: 450px;
-  padding: 30px;
-  background: inherit;
-  color: white;
-  font-size: 25px;
-  outline: none;
-  user-select: none;
-  border: none;
-}
-@media screen and (max-width: 500px){
-  textarea{
-    font-size: 18px;
-    padding: 20px;
-  }
-}
-textarea::-webkit-scrollbar {
-  display: none;
-}
 .practice {
-  text-align: center;
-}
-.countdown {
-  margin: 20px 0;
-  word-spacing: 0.3em;
-  font-weight: 400;
-}
-.removeCountDown {
-  overflow: hidden;
-  visibility: hidden;
-  margin-top: 40px;
+  @include flexed(column, center, center);
+  word-wrap: break-word;
+  textarea {
+    width: 100vw;
+    max-width: 1080px;
+    height: 450px;
+    padding: 30px;
+    background: inherit;
+    color: white;
+    font-size: 25px;
+    outline: none;
+    user-select: none;
+  }
+  @media screen and (max-width: 500px) {
+    textarea {
+      font-size: 18px;
+      padding: 20px;
+    }
+  }
+  textarea::-webkit-scrollbar {
+    display: none;
+  }
+  .countdown {
+    margin: 20px 0;
+    word-spacing: 0.3em;
+    font-weight: 400;
+  }
+  .removeCountDown {
+    visibility: hidden;
+    margin-top: 40px;
+  }
+  input {
+    margin-top: 20px;
+    width: 1080px;
+    font-size: inherit;
+    font-size: 2rem;
+    min-height: 5vh;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    &:focus {
+      outline: none;
+      box-shadow: 2px 2px 6px 2px rgba(0, 221, 255, 0.28);
+    }
+  }
 }
