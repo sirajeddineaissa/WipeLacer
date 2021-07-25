@@ -40,9 +40,9 @@ const SettingsPage = () => {
         
     }
 
-    const handleApply = ()=>{
+    const handleApply =async ()=>{
         setDisableButton(true); 
-        setUserSettings(settings);
+        await setUserSettings(settings);
         resetSoundStatus();
     }
 

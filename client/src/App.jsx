@@ -4,7 +4,7 @@ import './App.scss';
 import HomePage from './Pages/HomePage';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import StartPage from './Pages/StartPage';
-import PracticePage from './Pages/PracticePage';
+// import PracticePage from './Pages/PracticePage';
 import SettingsPage from './Pages/SettingsPage'
 import Signup from './Pages/Signup';
 import SoundPlayer from './Components/SoundPlayer';
@@ -17,15 +17,17 @@ import { CSSTransition } from "react-transition-group";
 import { AuthProvider } from "./contexts/AuthContext";
 import Login from './Pages/Login';
 import TransitionScreen from './Components/TransitionScreen';
+import Practice from './Pages/Practice';
 
 
 const routes = [
   {name: 'home', path: '/', Component:HomePage},
   { name: 'start', path: '/start', Component: StartPage },
-  {name: 'practice', path: '/practice', Component:PracticePage},
+  {name: 'practice', path: '/practice', Component:Practice},
   {name: 'setting', path: '/settings', Component:SettingsPage},
   {name: 'sign up', path: '/signup', Component:Signup},
   {name: 'login', path: '/login', Component:Login},
+  
 ]
 
 function App() {

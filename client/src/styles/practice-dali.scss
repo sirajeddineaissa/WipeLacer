@@ -1,0 +1,27 @@
+@import '../config';
+
+.practice-dali{
+    position: absolute;
+    width: 100%;
+    font-size: 1.8rem;
+    .contained{
+        min-height: 100vh;
+        margin : 0 auto;
+        max-width: 800px;
+        @include flexed(column, center, stretch);
+        .text-space{
+            padding: 20px;
+        }
+        input{
+            padding: 10px 40px;
+            font-size: inherit;
+            background-color: $background-color;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+        .space-after{
+            margin-right: 10px;
+        }
+    }
+}

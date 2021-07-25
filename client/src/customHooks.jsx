@@ -1,4 +1,5 @@
-import {useState,useDebugValue} from 'react'
+import axios from 'axios'
+import {useState,useDebugValue,useEffect} from 'react'
 import {useSpring} from 'react-spring'
 
 function useHover({
@@ -21,4 +22,18 @@ function useHover({
     return [animation,setHovered];
 }
 
-export {useHover};
+function useQuote(){
+
+  const [wordsNext, setWordsNext] = useState("")
+
+  useEffect(async()=>{
+     const response = await axios.get("https://api.quotable.io/random?minLength=50");
+     const data= response.data;
+     setWordsNext(data.content)
+  },[])
+
+  return [wordsNext,setWordsNext]
+}
+
+
+export {useHover,useQuote};
