@@ -7,7 +7,7 @@ import StartPage from './Pages/StartPage';
 // import PracticePage from './Pages/PracticePage';
 import SettingsPage from './Pages/SettingsPage'
 import Signup from './Pages/Signup';
-import SoundPlayer from './Components/SoundPlayer';
+import SoundPlayer from './components/SoundPlayer';
 import { SoundProvider } from './contexts/SoundContext';
 
 
@@ -16,7 +16,7 @@ import { CSSTransition } from "react-transition-group";
 
 import { AuthProvider } from "./contexts/AuthContext";
 import Login from './Pages/Login';
-import TransitionScreen from './Components/TransitionScreen';
+import TransitionScreen from './components/TransitionScreen';
 import Practice from './Pages/Practice';
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import NavBar from '../Components/NavBar'
-import KeyboardSvg from '../Components/KeyboardSvg'
-import MyLi from '../Components/MyLi'
+import NavBar from '../components/NavBar'
+import KeyboardSvg from '../components/KeyboardSvg'
+import MyLi from '../components/MyLi'
 import {NavLink} from 'react-router-dom'
 
 

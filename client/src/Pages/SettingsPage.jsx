@@ -1,8 +1,8 @@
 import React,{useState, useEffect} from 'react';
 import '../styles/settings.scss'
 
-import HomeButton from '../Components/HomeButton'
-import Parameter from '../Components/Parameter';
+import HomeButton from '../components/HomeButton'
+import Parameter from '../components/Parameter';
 import {useSound } from '../contexts/SoundContext'
 
 import {useHover} from '../customHooks'

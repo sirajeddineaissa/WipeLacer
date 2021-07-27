@@ -4,6 +4,9 @@
     position: absolute;
     width: 100%;
     font-size: 1.8rem;
+    .green{
+        color: green;
+    }
     .contained{
         min-height: 100vh;
         margin : 0 auto;
@@ -11,6 +14,10 @@
         @include flexed(column, center, stretch);
         .text-space{
             padding: 20px;
+            pointer-events: none;
+            & *::selection {
+               color: inherit; 
+            }
         }
         input{
             padding: 10px 40px;
@@ -20,8 +27,8 @@
             border: none;
             outline: none;
         }
-        .space-after{
-            margin-right: 10px;
-        }
+        // .space-after{
+        //     margin-right: 3px;
+        // }
     }
 }

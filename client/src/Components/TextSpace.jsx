@@ -6,9 +6,9 @@ export default function TextSpace() {
     const {wordsNext, writtenWords, currentWord} = usePractice()
     return (
         <div className="text-space">
-            <span className="space-after"> {writtenWords} </span>
-            <span>{currentWord.lettersWritten}</span>
-            <span className="space-after">{currentWord.lettersNotWritten}</span>
+            <span className="green"> {writtenWords} </span>
+            <span className="green">{currentWord.lettersWritten}</span>
+            <span >{currentWord.lettersNotWritten+" "}</span>
             <span>{wordsNext}</span>
         </div>
     )

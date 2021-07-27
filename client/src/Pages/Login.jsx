@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useHover } from '../customHooks';
 import { animated } from 'react-spring';
 import { useAuth } from '../contexts/AuthContext';
-import HomeButton  from '../Components/HomeButton';
+import HomeButton  from '../components/HomeButton';
 
 export default function Login() {
 
