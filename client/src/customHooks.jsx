@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {useState,useDebugValue,useEffect} from 'react'
 import {useSpring} from 'react-spring'
+import {getFirstWord, removeFirstWord} from './functions/StringFunctions'
 
 function useHover({
     transformFrom='none',
@@ -24,16 +25,53 @@ function useHover({
 
 function useQuote(){
 
-  const [wordsNext, setWordsNext] = useState("")
+  const [writtenWords, setWrittenWords] = useState("")
+    const [currentWord, setCurrentWord] = useState({
+        lettersWritten: "",
+        lettersNotWritten:"",
+        fullWord: "",
+    })
+    const [wordsNext, setWordsNext] = useState("");
 
-  useEffect(async()=>{
-     const response = await axios.get("https://api.quotable.io/random?minLength=50");
-     const data= response.data;
-     setWordsNext(data.content)
-  },[])
+    //input handling
+    useEffect(async()=>{
+        const response = await axios.get("https://api.quotable.io/random?minLength=50");
+        const data= response.data;
+        setCurrentWord(prev=>{return{
+           ...prev, lettersNotWritten: getFirstWord(data.content), fullWord:getFirstWord(data.content)
+       }})
+       setWordsNext(removeFirstWord(data.content))
+    },[])
 
-  return [wordsNext,setWordsNext]
+    return {
+      writtenWords, setWrittenWords,
+      currentWord, setCurrentWord,
+      wordsNext, setWordsNext
+    }
+}
+
+function useCoundDown(){
+    const [countdownNumber, setCountdownNumber] = useState(5)
+    const [started, setStarted] = useState(false)
+
+    useEffect(()=>{
+       const countDownInterval = setInterval(()=>{
+            setCountdownNumber(prev=>prev-1)  
+            let realCount ;
+            setCountdownNumber(prev=>{realCount=prev; return prev})
+            if(realCount<=0) {
+                console.log('stopped')
+                setStarted(true)
+                clearInterval(countDownInterval);
+            }
+           
+       },1000) 
+    },[])
+
+    return {
+      countdownNumber, started
+    }
 }
 
 
-export {useHover,useQuote};
+export {useHover,useQuote,useCoundDown};

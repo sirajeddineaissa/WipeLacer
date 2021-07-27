@@ -27,7 +27,7 @@ const SettingsPage = () => {
         setSettings(foundSettings.settings)
     }, [currentUser])
     
-
+    //sets the state when you switch a setting
     const switchSetting = (index)=>{
         setDisableButton(false)
         setSettings(prev=>{

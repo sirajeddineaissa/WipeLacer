@@ -3,15 +3,27 @@
 .practice-dali{
     position: absolute;
     width: 100%;
+    min-height: 100vh;
     font-size: 1.8rem;
+    @include flexed(row, center, center);
     .green{
         color: green;
     }
     .contained{
-        min-height: 100vh;
+        
         margin : 0 auto;
         max-width: 800px;
         @include flexed(column, center, stretch);
+        position: relative;
+        .countdown{
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid white;
+            border-radius: 5px;
+            padding: 5px 20px;
+        }
         .text-space{
             padding: 20px;
             pointer-events: none;

@@ -4,9 +4,10 @@ import '../styles/practice-dali.scss'
 import React,{createContext, useContext, useEffect, useState} from 'react'
 import TextSpace from '../components/TextSpace'
 import RaceInput from '../components/RaceInput';
-import { useQuote } from '../customHooks';
+import { useCoundDown, useQuote } from '../customHooks';
 
 import {getFirstWord, removeFirstWord, getFirstLetter, removeFirstLetter, getLastLetter, addLetter} from '../functions/StringFunctions'
+import CountDown from '../components/CountDown';
 
 //setting context
 const PracticeContext = createContext();
@@ -16,29 +17,21 @@ export function usePractice(){
 
 export default function Practice() {
 
-    //the main parts
-    const [writtenWords, setWrittenWords] = useState("")
-    const [currentWord, setCurrentWord] = useState({
-        lettersWritten: "",
-        lettersNotWritten:"",
-        fullWord: "",
-    })
-    const [wordsNext, setWordsNext] = useState("");
+    //setting counter
+    const {
+        countdownNumber, 
+        started
+    } = useCoundDown()
 
-    //input handling
-    useEffect(async()=>{
-        const response = await axios.get("https://api.quotable.io/random?minLength=50");
-        const data= response.data;
-        setCurrentWord(prev=>{return{
-           ...prev, lettersNotWritten: getFirstWord(data.content), fullWord:getFirstWord(data.content)
-       }})
-       setWordsNext(removeFirstWord(data.content))
-    },[])
-
+    //initializing the quote
+    const {
+        writtenWords, setWrittenWords,
+        currentWord, setCurrentWord,
+        wordsNext, setWordsNext
+    } = useQuote();
 
     const handleChange = (e)=>{
         const {value} = e.target; 
-        // if(!getLastLetter(value)) return ;
 
         if(getLastLetter(value)===" "){
             
@@ -56,20 +49,17 @@ export default function Practice() {
             return;
         }
 
-        // if(!(getLastLetter(value)===getFirstLetter(currentWord.lettersNotWritten))) return ; 
         if(currentWord.fullWord.substr(0, value.length) === value){
-            console.log(currentWord.fullWord.substr(0, value.length))
             setCurrentWord(prev=>{return{
                 fullWord: prev.fullWord,
                 lettersWritten:currentWord.fullWord.substr(0, value.length) ,
                 lettersNotWritten:currentWord.fullWord.substr(value.length)
             }})
+        
+            if(wordsNext) return;
+            if(currentWord.lettersNotWritten.length>1)return;
+            console.log('last character written') // here we stop the race
         }
-
-        // setCurrentWord(prev=>{return{
-        //     lettersWritten:addLetter(prev.lettersWritten,getLastLetter(value)),
-        //     lettersNotWritten:removeFirstLetter(prev.lettersNotWritten)
-        // }})
     }
 
     
@@ -78,15 +68,19 @@ export default function Practice() {
         wordsNext,
         writtenWords,
         currentWord,
-        handleChange
+        handleChange,
+        started,
+        countdownNumber
     }
 
     return (
         <PracticeContext.Provider value={value}>
+        
         <div className="practice-dali">
             <div className="contained">
-            <TextSpace/>
-            <RaceInput/>
+                <CountDown/>
+                <TextSpace/>
+                <RaceInput/>
             </div>
         </div>
         </PracticeContext.Provider>
