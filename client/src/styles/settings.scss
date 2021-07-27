@@ -1,28 +1,28 @@
-@import '../config';
+@import "../config";
 
-.settings{
-    font-size: 1.7rem;
-    .contained {
-        min-height: 100vh;
-        width: 70%;
-        padding: 70px 0 ;
-        @include flexed(column, center, stretch);
-        
-        .apply{
-            align-self: flex-end; 
-            cursor: pointer; 
-            &:disabled{
-                color: grey;
-                border-color:grey;
-                background-color: transparent !important;
-                &:hover{
-                    color: grey;
-                }
-            }
+.settings {
+  font-size: 1.7rem;
+  .contained {
+    min-height: 100vh;
+    width: 70%;
+    padding: 70px 0;
+    @include flexed(column, center, stretch);
 
-            &:hover{
-                color: $background-color;
-            }
+    .apply {
+      align-self: flex-end;
+      cursor: pointer;
+      &:disabled {
+        color: grey;
+        border-color: grey;
+        background-color: transparent !important;
+        &:hover {
+          color: grey;
         }
+      }
+
+      &:hover {
+        color: $background-color;
+      }
     }
+  }
 }

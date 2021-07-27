@@ -6,11 +6,11 @@ const KeyboardSvg = () => {
   const location = useLocation();
   useEffect(() => {
     const intervals = keyboardAnimations();
-    return ()=>{
+    return () => {
       intervals.forEach(interval => {
         clearInterval(interval);
       })
-   }
+    }
 
   }, []);
 

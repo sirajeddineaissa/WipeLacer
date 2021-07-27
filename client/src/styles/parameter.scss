@@ -1,61 +1,64 @@
-@import '../config'; 
-.activation{
-    position: relative;
-    width: 60px ; height: 30px;
-    border-radius: 20px;
-    border: 2px solid white;
-    cursor: pointer;
-    overflow: hidden;
-    &:hover{
-        .circle {
-            background: rgb(235, 235, 235);
-        }
+@import "../config";
+.activation {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  border-radius: 20px;
+  border: 2px solid white;
+  cursor: pointer;
+  overflow: hidden;
+  &:hover {
+    .circle {
+      background: rgb(235, 235, 235);
     }
+  }
 
-    .circle,.background{
-        transition: transform 200ms ease;
+  .circle,
+  .background {
+    transition: transform 200ms ease;
+  }
+
+  .circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    width: 50%;
+    height: 100%;
+    background: white;
+    border: 3px solid white;
+    box-sizing: border-box;
+  }
+  .background {
+    position: absolute;
+    inset: 0;
+    &.grey {
+      background: grey;
+      transform: translateX(25%);
     }
-    
-    .circle{
-        position:absolute;
-        top: 0; left: 0 ;
-        border-radius: 50%;
-        width: 50%;
-        height: 100%;
-        background: white;
-        border: 3px solid white;
-        box-sizing:border-box;
+    &.green {
+      background: green;
+      transform: translateX(-75%);
     }
-    .background{
-        position: absolute; 
-        inset: 0  ; 
-        &.grey{
-            background: grey;
-            transform :translateX(25%);
-        }
-        &.green{
-            background: green;
-            transform: translateX(-75%);
-        }
+  }
+  &.on {
+    .circle {
+      transform: translateX(100%);
     }
-    &.on{
-        .circle{
-            transform: translateX(100%);
-        }
-        .grey{
-            transform: translateX(75%);
-        }
-        .green{
-            transform: translateX(-25%);
-        }
+    .grey {
+      transform: translateX(75%);
     }
+    .green {
+      transform: translateX(-25%);
+    }
+  }
 }
 
-.parameter{
-    @include flexed(row, space-between, center)
+.parameter {
+  @include flexed(row, space-between, center);
 }
-hr{
-    margin: 20px 0 ; 
-    border-color: white;
-    background-color: white;
+hr {
+  margin: 20px 0;
+  border-color: white;
+  background-color: white;
 }

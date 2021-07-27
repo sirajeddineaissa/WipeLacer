@@ -1,19 +1,19 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Sound from 'react-sound'
 import keyboardSound from '../sounds/keyboard.mp3'
 import { useSound } from '../contexts/SoundContext'
 
 export default function SoundPlayer() {
 
-    const {soundStatus} = useSound();
-    
+    const { soundStatus } = useSound();
+
     return (
         <div>
-            <Sound 
+            <Sound
                 url={keyboardSound}
-                playStatus={soundStatus?Sound.status.PLAYING: Sound.status.STOPPED}
+                playStatus={soundStatus ? Sound.status.PLAYING : Sound.status.STOPPED}
                 playFromPosition={0}
-                loop 
+                loop
             />
         </div>
     )

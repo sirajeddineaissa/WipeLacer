@@ -1,27 +1,27 @@
 .practice {
   @include flexed(column, center, center);
   word-wrap: break-word;
-  // textarea {
-  //   width: 100vw;
-  //   max-width: 1080px;
-  //   height: 450px;
-  //   padding: 30px;
-  //   background: inherit;
-  //   color: silver;
-  //   font-size: 25px;
-  //   border: none;
-  //   outline: none;
-  //   user-select: none;
-  // }
-  // @media screen and (max-width: 500px) {
-  //   textarea {
-  //     font-size: 18px;
-  //     padding: 20px;
-  //   }
-  // }
-  // textarea::-webkit-scrollbar {
-  //   display: none;
-  // }
+  textarea {
+    width: 100vw;
+    max-width: 1080px;
+    height: 450px;
+    padding: 30px;
+    background: inherit;
+    color: silver;
+    font-size: 25px;
+    border: none;
+    outline: none;
+    user-select: none;
+  }
+  @media screen and (max-width: 500px) {
+    textarea {
+      font-size: 18px;
+      padding: 20px;
+    }
+  }
+  textarea::-webkit-scrollbar {
+    display: none;
+  }
   .countdown {
     margin: 20px 0;
     word-spacing: 0.3em;
@@ -32,8 +32,7 @@
     margin-top: 40px;
   }
   input {
-    margin-top: 20px;
-    width: 1080px;
+    width: 700px;
     font-size: inherit;
     font-size: 2rem;
     min-height: 5vh;
@@ -47,18 +46,16 @@
   }
   .Character {
     text-align: center;
-    white-space: pre;
     width: 100vw;
     max-width: 1080px;
-    height: 450px;
+    height: 400px;
     padding: 30px;
     background: inherit;
     color: rgb(255, 255, 255);
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 600;
-    border: none;
-    outline: none;
     user-select: none;
+    line-height: 1.5em;
   }
 
   .Character-current {
@@ -68,8 +65,8 @@
   .Character-out {
     color: rgb(81, 255, 0);
   }
-  .Character::-webkit-scrollbar{
-    display: none;
+
+  h1{
+    margin-top: 20px;
   }
- 
 }
