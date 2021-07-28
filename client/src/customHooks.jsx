@@ -69,9 +69,39 @@ function useCoundDown(){
     },[])
 
     return {
-      countdownNumber, started
+      countdownNumber, started,
+      setStarted
     }
 }
 
+function useWpm(started, setWrittenWords){
+  const [wpm, setWpm] = useState(0);
 
-export {useHover,useQuote,useCoundDown};
+    const [countingInterval, setCountingInterval] = useState(null);
+
+    useEffect(()=>{
+        if(!started) {
+            if(countingInterval) {
+                clearInterval(countingInterval);
+                setCountingInterval(null);
+            }   
+            return 
+        };
+        let nbrSeconds = 0;
+        setCountingInterval(setInterval(()=>{
+            nbrSeconds++;
+
+            //get number of words written
+            let nbrWords ; 
+            setWrittenWords(prev=>{nbrWords= prev.split(' ').length-1; console.log(prev) ; return prev})
+
+            // setting wpm
+            setWpm((nbrWords*60)/nbrSeconds)
+        },1000))
+        
+
+    },[started])
+    return wpm;
+}
+
+export {useHover,useQuote,useCoundDown, useWpm};

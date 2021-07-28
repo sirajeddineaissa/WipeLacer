@@ -7,13 +7,17 @@
     font-size: 1.8rem;
     @include flexed(row, center, center);
     .green{
-        color: green;
+        color: lightgreen;
+    }
+    .blue{
+        background-color: lightblue;
     }
     .contained{
         
         margin : 0 auto;
         max-width: 800px;
         @include flexed(column, center, stretch);
+        row-gap: 50px;
         position: relative;
         .countdown{
             position: absolute;
@@ -30,14 +34,43 @@
             & *::selection {
                color: inherit; 
             }
+            line-height: 1.6em;
+            .current-word{
+                position : relative;
+                z-index: 1;
+                background-color: rgba(0, 0, 0, 0.425);
+            }
         }
-        input{
-            padding: 10px 40px;
-            font-size: inherit;
-            background-color: $background-color;
-            border-radius: 5px;
-            border: none;
-            outline: none;
+        .input-container{
+            position: relative;
+            .line{
+                
+                transform-origin: left;
+                transform: scaleX(0);
+                transition: transform 700ms ease;
+                margin: 0 20px;
+            }
+            input{
+                position : relative; 
+                padding: 10px 40px;
+                font-size: inherit;
+                background-color: transparent;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                &:focus + .line{
+                    transform: none;
+                }
+                
+                &:disabled{
+                    opacity: 0 ;
+                }
+            }
+        }
+        .wpm{
+            position : absolute;
+            bottom: 100%; 
+            right: 0;
         }
         // .space-after{
         //     margin-right: 3px;
