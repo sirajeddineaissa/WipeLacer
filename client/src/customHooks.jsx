@@ -24,11 +24,12 @@ function useHover({
 }
 
 function useQuote(){
-
-  const [writtenWords, setWrittenWords] = useState("")
+    const [data, setData] = useState()
+    const [writtenWords, setWrittenWords] = useState("")
     const [currentWord, setCurrentWord] = useState({
         lettersWritten: "",
         lettersNotWritten:"",
+        lettersWrong: '',
         fullWord: "",
     })
     const [wordsNext, setWordsNext] = useState("");
@@ -41,12 +42,14 @@ function useQuote(){
            ...prev, lettersNotWritten: getFirstWord(data.content), fullWord:getFirstWord(data.content)
        }})
        setWordsNext(removeFirstWord(data.content))
+       setData(data);
     },[])
 
     return {
       writtenWords, setWrittenWords,
       currentWord, setCurrentWord,
-      wordsNext, setWordsNext
+      wordsNext, setWordsNext,
+      data,setData
     }
 }
 
@@ -70,7 +73,7 @@ function useCoundDown(){
 
     return {
       countdownNumber, started,
-      setStarted
+      setStarted, setCountdownNumber
     }
 }
 
@@ -93,7 +96,7 @@ function useWpm(started, setWrittenWords){
 
             //get number of words written
             let nbrWords ; 
-            setWrittenWords(prev=>{nbrWords= prev.split(' ').length-1; console.log(prev) ; return prev})
+            setWrittenWords(prev=>{nbrWords= prev.split(' ').length-1; return prev})
 
             // setting wpm
             setWpm((nbrWords*60)/nbrSeconds)

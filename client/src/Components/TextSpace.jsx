@@ -8,8 +8,10 @@ export default function TextSpace() {
         <div className="text-space">
             <span className="green"> {writtenWords} </span>
             <span className="current-word">
-            <span className="green">{currentWord.lettersWritten}</span>
-            <span >{currentWord.lettersNotWritten+" "}</span>
+                <span className="green">{currentWord.lettersWritten}</span>
+                <span className="red">{currentWord.lettersWrong}</span>
+                <span >{currentWord.lettersNotWritten}</span>
+                <span> </span>
             </span>
             <span>{wordsNext}</span>
         </div>

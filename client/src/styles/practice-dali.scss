@@ -3,20 +3,25 @@
 .practice-dali{
     position: absolute;
     width: 100%;
+    padding: 100px 0 ;
     min-height: 100vh;
     font-size: 1.8rem;
-    @include flexed(row, center, center);
+    @include flexed(row, flex-start, center);
+    flex-direction: column;
     .green{
         color: lightgreen;
     }
     .blue{
         background-color: lightblue;
     }
+    .red{
+        background-color: rgb(240, 83, 83);
+    }
     .contained{
         
-        margin : 0 auto;
         max-width: 800px;
-        @include flexed(column, center, stretch);
+        width: 70%;
+        @include flexed(column, flex-start, stretch);
         row-gap: 50px;
         position: relative;
         .countdown{
@@ -29,7 +34,7 @@
             padding: 5px 20px;
         }
         .text-space{
-            padding: 20px;
+            // padding: 20px;
             pointer-events: none;
             & *::selection {
                color: inherit; 
@@ -75,5 +80,50 @@
         // .space-after{
         //     margin-right: 3px;
         // }
+        .information {
+            position: relative;
+            opacity : 0 ; 
+            transform: translateY(30px);
+            transition: opacity 300ms ease-in-out , transform 300ms ease-in-out ; 
+            &.shown{
+                opacity: 1; 
+                transform :none;
+            }
+
+            @include flexed(row, flex-start, flex-start);
+            .score{
+                display: inline;
+                flex-direction: column;
+                @include flexed(column, center, center);
+                width: 75px; height: 75px;
+                background-color: rgba($color: black, $alpha: 0.2);
+                border-radius: 50%;
+                p{
+                    font-size: 1.1rem;
+                    line-height: 0.9em;
+                }
+            }
+            .text{
+                flex: 1; 
+                padding: 15px;
+                hr{
+                    margin: 10px 0;
+                }
+                .date{
+                    font-size: 1rem;
+                }
+            }
+            .home-button {
+                position: relative;
+                width: 30px ; height: 30px;
+                cursor: pointer;
+            }
+            .top-right{
+                position : absolute !important;
+                top: auto; left: auto; 
+                bottom: 100% ; right: 0;
+                display: flex;
+            }
+        }
     }
 }

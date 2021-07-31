@@ -1,5 +1,6 @@
 export function getFirstWord(str) {
     const spaceIndex = str.indexOf(' ');
+    console.log(spaceIndex)
     return spaceIndex === -1 ? str : str.substr(0, spaceIndex);
 };
 
@@ -22,4 +23,13 @@ export function addLetter(str, letter){
 
 export function removeFirstLetter(str) {
     return str.substr(1)
+}
+
+export function removeFirstSpaces(str){
+    let number =0 ; 
+    for(let i = 0 ; i < str.length ; i++){
+        if(str[i]!==" ") break; 
+        number ++ ; 
+    }
+    return str.substr(number);
 }
