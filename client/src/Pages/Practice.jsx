@@ -38,7 +38,7 @@ export default function Practice() {
     } = useQuote();
 
     // initiliazing wpm counter
-    const wpm = useWpm(started,setWrittenWords)
+    const {wpm,setWpm} = useWpm(started,setWrittenWords,setCurrentWord)
 
     //input dependencies
     const switchWord = ()=>{
@@ -72,6 +72,8 @@ export default function Practice() {
     const resetGame = ()=>{
         setStarted(false);
         setCountdownNumber(5);
+        
+        
         setScore(wpm);
         setWordsNext(removeFirstWord(removeFirstSpaces(writtenWords))+" "+ currentWord.fullWord);
         setCurrentWord(prev=>{return {
@@ -129,8 +131,10 @@ export default function Practice() {
             switchLetters(value)
         
             if(wordsNext) return;
+            
             if(currentWord.lettersNotWritten.length>1)return;
             
+
             switchLastWord(value);
 
             resetGame();

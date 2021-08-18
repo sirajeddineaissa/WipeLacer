@@ -77,7 +77,7 @@ function useCoundDown(){
     }
 }
 
-function useWpm(started, setWrittenWords){
+function useWpm(started, setWrittenWords,setCurrentWord){
   const [wpm, setWpm] = useState(0);
 
     const [countingInterval, setCountingInterval] = useState(null);
@@ -95,16 +95,21 @@ function useWpm(started, setWrittenWords){
             nbrSeconds++;
 
             //get number of words written
-            let nbrWords ; 
-            setWrittenWords(prev=>{nbrWords= prev.split(' ').length-1; return prev})
+            let nbrLetters ; 
+            setWrittenWords(prev=>{nbrLetters= prev.length; return prev})
+
+            //get the number of additional letters
+            let addLetters;
+            setCurrentWord(prev=>{addLetters= prev.lettersWritten.length;return prev})
+            console.log(addLetters)
 
             // setting wpm
-            setWpm((nbrWords*60)/nbrSeconds)
+            setWpm((((nbrLetters+addLetters)/5)*60)/nbrSeconds)
         },1000))
         
 
     },[started])
-    return wpm;
+    return {wpm,setWpm};
 }
 
 export {useHover,useQuote,useCoundDown, useWpm};
