@@ -2,15 +2,16 @@ import React, { useEffect } from 'react'
 import { usePractice } from '../Pages/Practice'
 import NewGameButton from './NewGameButton';
 import RetryButton from './RetryButton';
+import { useStart } from '../Pages/StartPage';
 
-export default function Information(props) {
+export default function Information({type,className}) {
 
-    const {score,data} = usePractice();
+    const {score,data} = type=="start"?useStart():usePractice();
     return data?(
-        <div {...props}>
+        <div className={className}>
             <div className="top-right">
-                <RetryButton/>
-                <NewGameButton/>
+                <RetryButton type={type}/>
+                <NewGameButton type={type}/>
             </div>
             <div className="score">
                 <h3>{parseInt(score)}</h3>

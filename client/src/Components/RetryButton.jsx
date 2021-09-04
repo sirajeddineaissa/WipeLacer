@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { usePractice } from '../Pages/Practice'
+import { useStart } from '../Pages/StartPage';
 
-export default function RetryButton() {
+export default function RetryButton({type}) {
 
-    const {startGame, startWithDiffQuote} = usePractice();
+    const {startGame, startWithDiffQuote} = type=="start"?useStart(): usePractice();
 
     return (
         <div to="/" className="home-button" onClick={()=>{startGame()}} >

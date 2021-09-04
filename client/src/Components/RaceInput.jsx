@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import { usePractice } from '../Pages/Practice'
+import { useStart } from '../Pages/StartPage'
 
-export default function RaceInput() {
+export default function RaceInput({type}) {
 
-    const {handleChange, started} = usePractice()
+    const {handleChange, started} = type=="start"?useStart():usePractice()
 
     const inputRef = useRef()
 

@@ -1,9 +1,10 @@
 import React from 'react'
 import { usePractice } from '../Pages/Practice'
+import { useStart } from '../Pages/StartPage'
 
-export default function TextSpace() {
+export default function TextSpace({type}) {
 
-    const {wordsNext, writtenWords, currentWord} = usePractice()
+    const {wordsNext, writtenWords, currentWord} = type=="start"?useStart():usePractice()
     return (
         <div className="text-space">
             <span className="green"> {writtenWords} </span>

@@ -36,7 +36,7 @@ function useQuote(){
 
     //input handling
     useEffect(async()=>{
-        const response = await axios.get("https://api.quotable.io/random?minLength=50");
+        const response = await axios.get("https://api.quotable.io/random?minLength=150");
         const data= response.data;
         setCurrentWord(prev=>{return{
            ...prev, lettersNotWritten: getFirstWord(data.content), fullWord:getFirstWord(data.content)
@@ -112,4 +112,32 @@ function useWpm(started, setWrittenWords,setCurrentWord){
     return {wpm,setWpm};
 }
 
-export {useHover,useQuote,useCoundDown, useWpm};
+function useRealCountdown(){
+    const [countdownNumber, setCountdownNumber] = useState(10)
+    const [started, setStarted] = useState(false)
+    
+
+    useEffect(()=>{
+
+        //await for other player
+
+        const countDownInterval = setInterval(()=>{
+            setCountdownNumber(prev=>prev-1)  
+            let realCount ;
+            setCountdownNumber(prev=>{realCount=prev; return prev})
+            if(realCount<=0) {
+                console.log('stopped')
+                setStarted(true)
+                clearInterval(countDownInterval);
+            }
+           
+       },1000) 
+    },[])
+
+    return {
+      countdownNumber, started,
+      setStarted, setCountdownNumber
+    }
+}
+
+export {useHover,useQuote,useCoundDown, useWpm, useRealCountdown};

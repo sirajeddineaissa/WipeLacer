@@ -1,0 +1,49 @@
+@import '../config';
+
+.join{
+    width: 100%; height: 100vh;
+    @include flexed(row,center, center);
+    &>div{
+        @include flexed(column, center, stretch);
+        border: 2px solid white;
+        padding: 20px;
+        row-gap: 10px;
+        input{
+            padding: 5px;
+            background-color: transparent;
+            border: none;
+            width: 100%;
+        }
+        .input-place{
+            position: relative;
+            .line{
+                content:'';
+                position: absolute;
+                top: 100% ; 
+                left: 0;
+                width: 100%; 
+                height:2px;
+                background-color: lightblue;
+                transform-origin: left;
+                transform: scale(0);
+                transition: transform 300ms ease;
+            }
+            input:focus{
+                outline: none;
+                &+.line{
+                    transform : none;
+                }
+            }
+        }
+        button{
+            padding: 5px;
+            transition: background-color 300ms ease;
+            cursor: pointer;
+            &:hover{
+                color: $background-color; 
+                background-color: white;
+            }
+        }
+        
+    }
+}

@@ -1,10 +1,11 @@
 import React from 'react'
 import { usePractice } from '../Pages/Practice'
+import { useStart } from '../Pages/StartPage'
 
 
-export default function CountDown() {
+export default function CountDown({type}) {
 
-    const {countdownNumber,started} = usePractice()
+    const {countdownNumber,started} = type=="start"?useStart():usePractice()
 
     return (
         <>
