@@ -78,6 +78,11 @@ button {
   background-color:rgba($color: #C4C4C4, $alpha: 0.24);
 }
 
+.error {
+  color: red; 
+  font-size:0.8em ; 
+}
+
 .page{
   position: absolute; 
   width: 100% ; 
