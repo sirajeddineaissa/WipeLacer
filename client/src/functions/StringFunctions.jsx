@@ -1,6 +1,5 @@
 export function getFirstWord(str) {
     const spaceIndex = str.indexOf(' ');
-    console.log(spaceIndex)
     return spaceIndex === -1 ? str : str.substr(0, spaceIndex);
 };
 

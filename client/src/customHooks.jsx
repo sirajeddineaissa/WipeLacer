@@ -63,7 +63,7 @@ function useCoundDown(){
             let realCount ;
             setCountdownNumber(prev=>{realCount=prev; return prev})
             if(realCount<=0) {
-                console.log('stopped')
+                
                 setStarted(true)
                 clearInterval(countDownInterval);
             }
@@ -101,7 +101,7 @@ function useWpm(started, setWrittenWords,setCurrentWord){
             //get the number of additional letters
             let addLetters;
             setCurrentWord(prev=>{addLetters= prev.lettersWritten.length;return prev})
-            console.log(addLetters)
+            
 
             // setting wpm
             setWpm((((nbrLetters+addLetters)/5)*60)/nbrSeconds)
@@ -126,7 +126,7 @@ function useRealCountdown(){
             let realCount ;
             setCountdownNumber(prev=>{realCount=prev; return prev})
             if(realCount<=0) {
-                console.log('stopped')
+                
                 setStarted(true)
                 clearInterval(countDownInterval);
             }
@@ -140,4 +140,33 @@ function useRealCountdown(){
     }
 }
 
-export {useHover,useQuote,useCoundDown, useWpm, useRealCountdown};
+const useAnImportedQuote = (data,type)=>{
+    const [writtenWords, setWrittenWords] = useState("");
+    const [currentWord, setCurrentWord] = useState({
+        lettersWritten: "",
+        lettersNotWritten:"",
+        lettersWrong: '',
+        fullWord: "",
+    })
+    const [wordsNext, setWordsNext] = useState("");
+
+    useEffect(()=>{
+
+        if(!data) return ;
+
+        setCurrentWord(prev=>{return{
+            ...prev, lettersNotWritten: getFirstWord(data.content), fullWord:getFirstWord(data.content)
+        }})
+        setWordsNext(removeFirstWord(data.content))
+        
+    },[data])
+
+    return {
+        writtenWords, setWrittenWords,
+        currentWord,setCurrentWord,
+        wordsNext, setWordsNext,
+    }
+
+}
+
+export {useHover,useQuote,useCoundDown, useWpm, useRealCountdown ,useAnImportedQuote};

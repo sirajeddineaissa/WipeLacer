@@ -3,36 +3,42 @@ import HomeButton from '../components/HomeButton'
 import { rdb } from '../firebase';
 import '../styles/join.scss'
 import StartPage from './StartPage';
+import { get } from 'firebase/database'
 
 
 export default function JoinPage() {
 
     const [error, setError] = useState("");
     const [foundGame, setFoundGame] = useState(false)
+    const [data, setData] = useState();
     const inputRef = useRef();
 
     const handleJoin = ()=>{
         const {value} = inputRef.current;
 
-        const GameRef= rdb.ref('Game').child(value) ; 
+        const GameRef=  rdb.ref('Game').child(value) ; 
         if(!GameRef){
             // display error message
             setError("Game not found !")
             return ;
         }
+        
+        const GameInfo =  GameRef.get().then( snapshot =>{
+            if(! snapshot.exists()) return ; 
+            setData(snapshot.val().data);
+        });
+
+        
         GameRef.update({
             foundPlayer: true
         })
         setFoundGame(true);
     }
 
-    return (
+    return foundGame? <StartPage type="join" data={data} setData={setData}/>:(
         <div className="join">
             <HomeButton/>
             {
-                foundGame? (
-                    <StartPage/>
-                ):
                 <div>
                     <label htmlFor="code-input">Enter game code</label>
                     <div className="input-place">

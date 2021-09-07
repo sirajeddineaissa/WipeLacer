@@ -12,13 +12,13 @@ import {getFirstWord, removeFirstWord, getFirstLetter, removeFirstSpaces, getLas
 import CountDown from '../components/CountDown';
 
 //setting context
-const PracticeContext = createContext();
-export function usePractice(){
-    return useContext(PracticeContext)
+const StartContext = createContext();
+export function useStart(){
+    return useContext(StartContext)
 }
 
 // main component
-export default function Practice() {
+export default function StartPage() {
 
     const [score, setScore] = useState(0);
     const [gameFinished, setGameFinished] = useState(false);
@@ -94,6 +94,8 @@ export default function Practice() {
             let realCount ;
             setCountdownNumber(prev=>{realCount=prev; return prev})
             if(realCount<=0) {
+                console.log('stopped')
+                
                 setStarted(true)
                 setGameFinished(false);
                 clearInterval(countDownInterval);
@@ -184,21 +186,20 @@ export default function Practice() {
     }
 
     return (
-        <PracticeContext.Provider value={value}>
+        <StartContext.Provider value={value}>
         <div className="practice-dali">
-            <HomeButton/>
+            <HomeButton />
             <div className="contained">
                 <div className="wpm">{parseInt(wpm)} wpm</div>
-                <CountDown/>
-                <TextSpace/>
+                <CountDown type="start"/>
+                <TextSpace type="start"/>
                 <div className="input-container">
-                    <RaceInput/>
+                    <RaceInput type="start"/>
                     <div className="blue line"></div>
                 </div>
-                <Information className={`information ${gameFinished? 'shown': ''}`}/>
+                <Information type="start" className={`information ${gameFinished? 'shown': ''}`}/>
             </div>
         </div>
-        </PracticeContext.Provider>
+        </StartContext.Provider>
     )
 }
-

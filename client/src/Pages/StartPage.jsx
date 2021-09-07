@@ -10,6 +10,7 @@ import { useCoundDown, useQuote,useWpm } from '../customHooks';
 
 import {getFirstWord, removeFirstWord, getFirstLetter, removeFirstSpaces, getLastLetter, addLetter} from '../functions/StringFunctions'
 import CountDown from '../components/CountDown';
+import { useAnImportedQuote } from '../customHooks';
 
 //setting context
 const StartContext = createContext();
@@ -18,7 +19,7 @@ export function useStart(){
 }
 
 // main component
-export default function StartPage() {
+export default function StartPage({data, setData, type}) {
 
     const [score, setScore] = useState(0);
     const [gameFinished, setGameFinished] = useState(false);
@@ -32,10 +33,10 @@ export default function StartPage() {
     //initializing the quote
     const {
         writtenWords, setWrittenWords,
-        currentWord, setCurrentWord,
+        currentWord,setCurrentWord,
         wordsNext, setWordsNext,
-        data, setData
-    } = useQuote();
+    } = useAnImportedQuote(data, type)
+    
 
     // initiliazing wpm counter
     const {wpm,setWpm} = useWpm(started,setWrittenWords,setCurrentWord)
@@ -94,7 +95,7 @@ export default function StartPage() {
             let realCount ;
             setCountdownNumber(prev=>{realCount=prev; return prev})
             if(realCount<=0) {
-                console.log('stopped')
+                
                 
                 setStarted(true)
                 setGameFinished(false);

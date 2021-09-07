@@ -11,7 +11,7 @@ export default function BeforeStart() {
 
     const [foundPlayer, setFoundPlayer] = useState(false);
     const [gameCode, setGameCode] = useState("");
-    const {data} = useQuote ();
+    const {data , setData} = useQuote ();
 
     //creating new game
     useEffect(()=>{
@@ -27,6 +27,8 @@ export default function BeforeStart() {
             data: data , 
 
         }
+
+        console.log(data);
         setGameCode(gameRef.push(game).key);
     },[data])
 
@@ -38,8 +40,7 @@ export default function BeforeStart() {
             const games = snapshot.val();
             
             for(let id in games){
-                console.log( gameCode,id)
-                console.log(gameCode==id)
+               
                 if(id != gameCode) continue ; 
                 
                 setFoundPlayer(games[id].foundPlayer);
@@ -54,25 +55,23 @@ export default function BeforeStart() {
 
     return (
         <RdbProvider value={value}>
-            <div className="before-start">
-               
-                <HomeButton/>
             {
-                foundPlayer?(
-                    <StartPage/>
-                ):(
-                    <div>
-                        <p>Send this code to your friend: </p>
-                        <div className="input-place">
-                            <input type="text" disabled value={gameCode}/> 
-                            <button onClick={()=>{
-                                navigator.clipboard.writeText(gameCode);
-                            }}>copy</button>
+                foundPlayer? <StartPage data={data} setData={setData}/>:
+                (
+                    <div className="before-start">
+                        <HomeButton/>
+                        <div>
+                            <p>Send this code to your friend: </p>
+                            <div className="input-place">
+                                <input type="text" disabled value={gameCode}/> 
+                                <button onClick={()=>{
+                                    navigator.clipboard.writeText(gameCode);
+                                }}>copy</button>
+                            </div>
                         </div>
                     </div>
                 )
             }
-            </div>
         </RdbProvider>
     )
 }
