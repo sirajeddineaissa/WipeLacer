@@ -10,6 +10,7 @@ export default function JoinPage() {
 
     const [error, setError] = useState("");
     const [foundGame, setFoundGame] = useState(false)
+    const [gameCode, setgameCode] = useState()
     const [data, setData] = useState();
     const inputRef = useRef();
 
@@ -26,16 +27,16 @@ export default function JoinPage() {
         const GameInfo =  GameRef.get().then( snapshot =>{
             if(! snapshot.exists()) return ; 
             setData(snapshot.val().data);
+            setgameCode(value)
         });
 
-        
         GameRef.update({
             foundPlayer: true
         })
         setFoundGame(true);
     }
 
-    return foundGame? <StartPage type="join" data={data} setData={setData}/>:(
+    return foundGame? <StartPage type="join" data={data} setData={setData} player={2} gameCode={gameCode}/>:(
         <div className="join">
             <HomeButton/>
             {

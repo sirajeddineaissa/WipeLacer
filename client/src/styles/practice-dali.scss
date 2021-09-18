@@ -77,6 +77,12 @@
             bottom: 100%; 
             right: 0;
         }
+        .ennemy-wpm{
+            position: absolute; 
+            right: 0;
+            bottom: 108%;
+            color: red;
+        }
         // .space-after{
         //     margin-right: 3px;
         // }
@@ -102,6 +108,12 @@
                     font-size: 1.1rem;
                     line-height: 0.9em;
                 }
+            }
+            .ennemy-score{
+                position: absolute; 
+                color: red;
+                top: 100%;
+                right: 0 ;
             }
             .text{
                 flex: 1; 

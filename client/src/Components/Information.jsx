@@ -6,7 +6,7 @@ import { useStart } from '../Pages/StartPage';
 
 export default function Information({type,className}) {
 
-    const {score,data} = type=="start"?useStart():usePractice();
+    const {score,data, ennemyScore} = type=="start"?useStart():usePractice();
     return data?(
         <div className={className}>
             <div className="top-right">
@@ -16,6 +16,9 @@ export default function Information({type,className}) {
             <div className="score">
                 <h3>{parseInt(score)}</h3>
                 <p>wpm</p>
+            </div>
+            <div className="ennemy-score">
+                Opponent : {parseInt(ennemyScore)} wpm
             </div>
             <div className="text">
                 <div><span>Author:</span> {data.author}</div>

@@ -11,6 +11,9 @@ import { useCoundDown, useQuote,useWpm } from '../customHooks';
 import {getFirstWord, removeFirstWord, getFirstLetter, removeFirstSpaces, getLastLetter, addLetter} from '../functions/StringFunctions'
 import CountDown from '../components/CountDown';
 import { useAnImportedQuote } from '../customHooks';
+import { rdb } from '../firebase';
+import { parse } from '@babel/core';
+
 
 //setting context
 const StartContext = createContext();
@@ -19,10 +22,13 @@ export function useStart(){
 }
 
 // main component
-export default function StartPage({data, setData, type}) {
+export default function StartPage({data, setData, type,player,gameCode}) {
+
 
     const [score, setScore] = useState(0);
     const [gameFinished, setGameFinished] = useState(false);
+    const [ennemyWpm, setEnnemyWpm] = useState(0)
+    const [ennemyScore, setEnnemyScore] = useState(0)
 
     //setting counter
     const {
@@ -76,6 +82,7 @@ export default function StartPage({data, setData, type}) {
         
         
         setScore(wpm);
+        setEnnemyScore(ennemyWpm);
         setWordsNext(removeFirstWord(removeFirstSpaces(writtenWords))+" "+ currentWord.fullWord);
         setCurrentWord(prev=>{return {
             ...prev, 
@@ -171,6 +178,27 @@ export default function StartPage({data, setData, type}) {
         
     }
 
+    //setting rdb player to wpm 
+    useEffect(()=>{
+        if(!gameCode) return ; 
+        const gameRef = rdb.ref("Game").child(gameCode);  
+        gameRef.update({
+            [`player${player}`]: wpm 
+        })
+    },[wpm,gameCode])
+
+    //getting enemy player wpm 
+    
+    useEffect(()=>{
+        if(!gameCode) return ; 
+        const gameRef = rdb.ref("Game").child(gameCode);
+        gameRef.on('value', (snapshot)=>{
+            const game = snapshot.val();
+            setEnnemyWpm(game[`player${3-player}`])
+        })
+    },[gameCode])
+
+    
     
     //values to share with child components
     const value = {
@@ -181,6 +209,7 @@ export default function StartPage({data, setData, type}) {
         started,
         countdownNumber,
         score,
+        ennemyScore,
         data,
         startGame,
         startWithDiffQuote
@@ -189,9 +218,10 @@ export default function StartPage({data, setData, type}) {
     return (
         <StartContext.Provider value={value}>
         <div className="practice-dali">
-            <HomeButton />
+            <HomeButton/>
             <div className="contained">
                 <div className="wpm">{parseInt(wpm)} wpm</div>
+                <div className="ennemy-wpm">{parseInt(ennemyWpm)} wpm</div>
                 <CountDown type="start"/>
                 <TextSpace type="start"/>
                 <div className="input-container">

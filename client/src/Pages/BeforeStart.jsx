@@ -20,18 +20,18 @@ export default function BeforeStart() {
         const gameRef= rdb.ref("Game");
         
         const game = {
-            
             player1: 0,
             player2: 0,
             foundPlayer: false,
+            gameFinished: false,
             data: data , 
-
         }
 
         console.log(data);
         setGameCode(gameRef.push(game).key);
     },[data])
 
+    //finding player listener
     useEffect(()=>{
         if(!gameCode) return ;
 
@@ -40,13 +40,16 @@ export default function BeforeStart() {
             const games = snapshot.val();
             
             for(let id in games){
-               
                 if(id != gameCode) continue ; 
-                
                 setFoundPlayer(games[id].foundPlayer);
+                return;
             }
         })
     },[gameCode])
+
+    const [ennemyWpm, setEnnemyWpm] = useState(0);
+
+    
 
 
     const value = {
@@ -56,7 +59,7 @@ export default function BeforeStart() {
     return (
         <RdbProvider value={value}>
             {
-                foundPlayer? <StartPage data={data} setData={setData}/>:
+                foundPlayer? <StartPage data={data} setData={setData} player={1} gameCode={gameCode}/>:
                 (
                     <div className="before-start">
                         <HomeButton/>
