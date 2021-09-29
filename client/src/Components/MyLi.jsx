@@ -23,7 +23,7 @@ const MyLi = ({children}) => {
             onMouseOut={()=>{setHovered(false)}}
         >
             <div className="line"></div>
-            <a>{children}</a>
+            {children}
             <div className="line"></div>
         </animated.li>
     );
