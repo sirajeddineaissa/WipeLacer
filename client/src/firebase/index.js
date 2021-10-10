@@ -3,7 +3,7 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyD6XFhshyoLLCLvUqnscTDCo0X6rmSSY9U",
+  apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "wipelacer-adb0e.firebaseapp.com",
   projectId: "wipelacer-adb0e",
   storageBucket: "wipelacer-adb0e.appspot.com",
