@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Sound from "react-sound";
 import keyboardSound from "../sounds/keyboard.mp3";
 import { useSound } from "../contexts/SoundContext";

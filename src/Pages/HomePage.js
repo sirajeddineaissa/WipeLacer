@@ -17,6 +17,11 @@ function HomePage() {
             </NavLink>
           </MyLi>
           <MyLi>
+            <NavLink to="/join" exact activeClassName="active">
+              Join
+            </NavLink>
+          </MyLi>
+          <MyLi>
             <NavLink to="/practice" exact activeClassName="active">
               Practice
             </NavLink>

@@ -1,5 +1,5 @@
 import React from "react";
-import RaceTemplate from "../components/RaceTemplate";
+import RaceTemplate from "../Components/RaceTemplate";
 
 const PracticePage = () => {
   return (

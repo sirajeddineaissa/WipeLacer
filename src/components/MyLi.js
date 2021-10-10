@@ -1,5 +1,5 @@
-import React from "react";
-import { animated } from "react-spring";
+import React, { useState } from "react";
+import { useSpring, animated } from "react-spring";
 import { useHover } from "../customHooks";
 
 const MyLi = ({ children }) => {
@@ -19,7 +19,7 @@ const MyLi = ({ children }) => {
       }}
     >
       <div className="line"></div>
-      <a>{children}</a>
+      {children}
       <div className="line"></div>
     </animated.li>
   );

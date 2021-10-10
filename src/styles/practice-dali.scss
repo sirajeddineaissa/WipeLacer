@@ -1,0 +1,141 @@
+@import '../config';
+
+.practice-dali{
+    position: absolute;
+    width: 100%;
+    padding: 100px 0 ;
+    min-height: 100vh;
+    font-size: 1.8rem;
+    @include flexed(row, flex-start, center);
+    flex-direction: column;
+    .green{
+        color: lightgreen;
+    }
+    .blue{
+        background-color: lightblue;
+    }
+    .red{
+        background-color: rgb(240, 83, 83);
+    }
+    .contained{
+        
+        max-width: 800px;
+        width: 70%;
+        @include flexed(column, flex-start, stretch);
+        row-gap: 50px;
+        position: relative;
+        .countdown{
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid white;
+            border-radius: 5px;
+            padding: 5px 20px;
+        }
+        .text-space{
+            // padding: 20px;
+            pointer-events: none;
+            & *::selection {
+               color: inherit; 
+            }
+            line-height: 1.6em;
+            .current-word{
+                position : relative;
+                z-index: 1;
+                background-color: rgba(0, 0, 0, 0.425);
+            }
+        }
+        .input-container{
+            position: relative;
+            .line{
+                
+                transform-origin: left;
+                transform: scaleX(0);
+                transition: transform 700ms ease;
+                margin: 0 20px;
+            }
+            input{
+                position : relative; 
+                padding: 10px 40px;
+                font-size: inherit;
+                background-color: transparent;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                &:focus + .line{
+                    transform: none;
+                }
+                
+                &:disabled{
+                    opacity: 0 ;
+                }
+            }
+        }
+        .wpm{
+            position : absolute;
+            bottom: 100%; 
+            right: 0;
+        }
+        .ennemy-wpm{
+            position: absolute; 
+            right: 0;
+            bottom: 108%;
+            color: red;
+        }
+        // .space-after{
+        //     margin-right: 3px;
+        // }
+        .information {
+            position: relative;
+            opacity : 0 ; 
+            transform: translateY(30px);
+            transition: opacity 300ms ease-in-out , transform 300ms ease-in-out ; 
+            &.shown{
+                opacity: 1; 
+                transform :none;
+            }
+
+            @include flexed(row, flex-start, flex-start);
+            .score{
+                display: inline;
+                flex-direction: column;
+                @include flexed(column, center, center);
+                width: 75px; height: 75px;
+                background-color: rgba($color: black, $alpha: 0.2);
+                border-radius: 50%;
+                p{
+                    font-size: 1.1rem;
+                    line-height: 0.9em;
+                }
+            }
+            .ennemy-score{
+                position: absolute; 
+                color: red;
+                top: 100%;
+                right: 0 ;
+            }
+            .text{
+                flex: 1; 
+                padding: 15px;
+                hr{
+                    margin: 10px 0;
+                }
+                .date{
+                    font-size: 1rem;
+                }
+            }
+            .home-button {
+                position: relative;
+                width: 30px ; height: 30px;
+                cursor: pointer;
+            }
+            .top-right{
+                position : absolute !important;
+                top: auto; left: auto; 
+                bottom: 100% ; right: 0;
+                display: flex;
+            }
+        }
+    }
+}

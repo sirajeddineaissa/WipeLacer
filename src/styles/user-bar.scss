@@ -1,28 +1,30 @@
-.user-bar {
-  position: relative;
-
-  &:hover * {
-    background: rgba($color: black, $alpha: 0.7);
-    &.actions {
-      background: transparent;
-      button {
-        background: rgba($color: black, $alpha: 0.7);
-      }
-      clip-path: inset(0 0 0 0);
+.user-bar{
+    position: relative; 
+    
+    &:hover *{ 
+        background: rgba($color: black, $alpha: 0.7); 
+        &.actions{
+            background: transparent;
+            button{
+                background:rgba($color: black, $alpha: 0.7);
+            }
+            clip-path: inset(0 0 0 0);
+        }
     }
-  }
-  .email {
-    padding: 10px 30px;
-    border: 2px solid white;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  .actions {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    clip-path: inset(0 0 100% 0);
-    transition: clip-path 300ms ease;
-  }
+    .email {
+        padding: 10px 30px;
+        border: 2px solid white; 
+        border-radius: 10px;
+        cursor: pointer;
+        
+    }
+    .actions {
+        position: absolute;
+        width: 100%; 
+        display: flex;
+        flex-direction: column; 
+        clip-path: inset(0 0 100% 0 );
+        transition: clip-path 300ms ease ; 
+
+    }
 }

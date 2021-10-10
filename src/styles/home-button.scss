@@ -1,33 +1,34 @@
-@import "../config";
+@import '../config';
 
 .home-button {
-  position: absolute;
-  z-index: 1001;
-  top: 20px;
-  left: 30px;
-  @include flexed(row, center, center);
-  svg {
-    fill: white;
-    transform: scale(0.8);
-    transition: transform 300ms ease;
-  }
-  &::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba($color: black, $alpha: 0.5);
-    z-index: -1;
-    clip-path: circle(0% at 50% 50%);
-
-    transition: clip-path 300ms ease;
-  }
-  &:hover::before {
-    clip-path: circle(50% at 50% 50%);
-  }
-  &:hover svg {
-    transform: none;
-  }
+    position: absolute; 
+    z-index: 1001;
+    top: 20px; 
+    left: 30px; 
+    @include flexed(row, center, center);
+    svg{
+        fill : white; 
+        transform : scale(0.8);
+        transition: transform 300ms ease; 
+    }
+    &::before {
+        content : ''; 
+        position: absolute; 
+        width: 100%; 
+        height: 100% ; 
+        top : 0 ; 
+        left: 0 ; 
+        background-color: rgba($color: black, $alpha: 0.5); 
+        z-index: -1;
+        clip-path : circle(0% at 50% 50%);
+        
+        transition: clip-path 300ms ease;
+    }
+    &:hover::before {
+        clip-path: circle(50% at 50% 50%);
+        
+    }
+    &:hover svg{
+        transform :none;
+    }
 }

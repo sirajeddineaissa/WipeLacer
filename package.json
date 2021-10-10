@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.1.2",
+    "@testing-library/react": "^12",
     "@testing-library/user-event": "^13.3.0",
     "axios": "^0.22.0",
     "firebase": "^9.1.2",

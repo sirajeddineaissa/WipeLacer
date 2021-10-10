@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../styles/settings.scss";
+
 import HomeButton from "../components/HomeButton";
 import Parameter from "../components/Parameter";
 import { useSound } from "../contexts/SoundContext";
+
 import { useHover } from "../customHooks";
 import { animated } from "react-spring";
 import { useAuth } from "../contexts/AuthContext";
@@ -23,6 +25,7 @@ const SettingsPage = () => {
     setSettings(foundSettings.settings);
   }, [currentUser]);
 
+  //sets the state when you switch a setting
   const switchSetting = (index) => {
     setDisableButton(false);
     setSettings((prev) => {
@@ -34,9 +37,9 @@ const SettingsPage = () => {
     });
   };
 
-  const handleApply = () => {
+  const handleApply = async () => {
     setDisableButton(true);
-    setUserSettings(settings);
+    await setUserSettings(settings);
     resetSoundStatus();
   };
 

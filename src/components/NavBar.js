@@ -4,6 +4,7 @@ import { animated } from "react-spring";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import UserBar from "./UserBar";
+
 import logo from "../images/wipeLacer.png";
 
 const NavBar = () => {
@@ -63,6 +64,10 @@ const NavBar = () => {
             </AnimatedLink>
           </div>
         )}
+
+        {/* <button >
+                {username}
+            </button> */}
       </div>
     </div>
   );

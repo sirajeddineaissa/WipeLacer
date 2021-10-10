@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const RaceTemplate = (props) => {
+const raceTemplate = (props) => {
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
   const [countDown, setCountDown] = useState(props.countStart);
+  const [leftPadding, setLeftPadding] = useState(
+    new Array(20).fill(" ").join("")
+  );
   const [outgoingChars, setOutgoingChars] = useState("");
   const [incomingChars, setIncomingChars] = useState("");
   const [currentChar, setCurrentChar] = useState("");
@@ -13,10 +16,8 @@ const RaceTemplate = (props) => {
   const [WPM, setWPM] = useState(0);
   const [accuracy, setAccuracy] = useState(0);
   const [insertedChars, setinsertedChars] = useState("");
-  const inputRef = useRef(null);
   useEffect(() => {
     countDown > 0 && setTimeout(() => setCountDown(countDown - 1), 1000);
-    if (!countDown) inputRef.current.focus();
   }, [countDown]);
 
   const quoteAPI = async () => {
@@ -41,10 +42,10 @@ const RaceTemplate = (props) => {
   useEffect(() => {
     quoteAPI();
   }, []);
-  const input = () => {
-    if (!countDown) return <input ref={inputRef}></input>;
-    return <input ref={inputRef} disabled></input>;
-  };
+  // const input = () => {
+  //     if (!countDown) return (<input ref={inputRef}></input>)
+  //     return (<input ref={inputRef} disabled></input>)
+  // }
   const keyPress = (callback) => {
     //everytime a key is pressed, we call the setKeyPressed to update the state
     const [keyPressed, setKeyPressed] = useState();
@@ -71,7 +72,6 @@ const RaceTemplate = (props) => {
       };
     });
   };
-  let state = false;
   const currentTime = () => new Date().getTime();
   keyPress((key) => {
     let updatedOutgoingChars = outgoingChars;
@@ -81,11 +81,10 @@ const RaceTemplate = (props) => {
       setStart(currentTime);
     } //start calculating WPM when user starts typing
     setinsertedChars(updatedinsertedChars);
-    if (
-      key === currentChar &&
-      inputRef.current.value.substr(inputRef.current.value.length - 1) ===
-        outgoingChars.substr(outgoingChars.length - 1)
-    ) {
+    if (key === currentChar) {
+      if (leftPadding.length > 0) {
+        setLeftPadding(leftPadding.substring(1));
+      }
       updatedOutgoingChars += currentChar;
       setOutgoingChars(updatedOutgoingChars);
       setCurrentChar(incomingChars.charAt(0));
@@ -96,13 +95,6 @@ const RaceTemplate = (props) => {
         const duration = (currentTime() - start) / 60000; // duration in minutes
         setWPM(Math.round((wordCount + 1) / duration)); // WPM = Total number of words / duration
       }
-      if (
-        currentChar === " " &&
-        inputRef.current.value.substr(inputRef.current.value.length - 1) ===
-          outgoingChars.substr(outgoingChars.length - 1)
-      ) {
-        inputRef.current.value = "";
-      }
       // Accuracy = correct inserted chars / all inserted chars
       setAccuracy(
         Math.round(
@@ -110,23 +102,23 @@ const RaceTemplate = (props) => {
         )
       );
     }
-    // console.log("outgoing     "+outgoingChars);
-    // console.log("current         "+currentChar);
-    // console.log("input      "+inputRef.current.value);
   });
-
+  // console.log(outgoingChars);
+  // console.log(WPM);
   return (
     <div className="practice">
       <h1 className={`${countDown ? "countdown" : "removeCountDown"}`}>
         Practice starts in {countDown}
       </h1>
+      {/* <textarea placeholder={quote} disabled></textarea>
+            {input()} */}
       <p className="Character">
-        <span className="Character-out ">{outgoingChars}</span>
-        <span className="Character-current ">{currentChar}</span>
-        <span>{incomingChars}</span>
+        <span className="Character-out">
+          {(leftPadding + outgoingChars).slice(-20)}
+        </span>
+        <span className="Character-current">{currentChar}</span>
+        <span>{incomingChars.substr(0, 50)}</span>
       </p>
-      {input()}
-
       <h1>
         WPM : {WPM} | Accuracy : {accuracy}
       </h1>
@@ -134,4 +126,4 @@ const RaceTemplate = (props) => {
   );
 };
 
-export default RaceTemplate;
+export default raceTemplate;
