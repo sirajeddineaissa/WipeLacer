@@ -11,16 +11,14 @@ export default function keyboardAnimations() {
     try {
       document
         .querySelector(`#toPress >path:nth-of-type(${i})`)
-      .classList.add("current");
-    }
-    catch (error) { }
+        .classList.add("current");
+    } catch (error) {}
     setTimeout(function () {
       try {
         document
           .querySelector(`#toPress >path:nth-of-type(${i})`)
-        .classList.remove("current");
-      }
-      catch (error) { }
+          .classList.remove("current");
+      } catch (error) {}
     }, 150);
   }, 300);
 
@@ -31,15 +29,13 @@ export default function keyboardAnimations() {
       document
         .querySelector(`#toPress >path:nth-of-type(${j})`)
         .classList.add("current");
-    }
-    catch (error) { }
+    } catch (error) {}
     setTimeout(function () {
       try {
         document
           .querySelector(`#toPress >path:nth-of-type(${j})`)
-        .classList.remove("current");
-      }
-      catch (error) { }
+          .classList.remove("current");
+      } catch (error) {}
     }, 200);
   }, 400);
 
@@ -49,16 +45,14 @@ export default function keyboardAnimations() {
     try {
       document
         .querySelector(`#toPress >path:nth-of-type(${k})`)
-      .classList.add("current");
-    }
-    catch (err) { }
+        .classList.add("current");
+    } catch (err) {}
     setTimeout(function () {
       try {
         document
           .querySelector(`#toPress >path:nth-of-type(${k})`)
-        .classList.remove("current");
-      }
-      catch (err) { }
+          .classList.remove("current");
+      } catch (err) {}
     }, 300);
   }, 600);
 
@@ -68,28 +62,27 @@ export default function keyboardAnimations() {
     try {
       document
         .querySelector(`#toPress >path:nth-of-type(${f})`)
-      .classList.add("current");
-    }
-    catch (err) { }
+        .classList.add("current");
+    } catch (err) {}
     setTimeout(function () {
       try {
         document
           .querySelector(`#toPress >path:nth-of-type(${f})`)
-        .classList.remove("current");
-      }
-      catch (err) {
-
-      }
+          .classList.remove("current");
+      } catch (err) {}
     }, 150);
   }, 300);
 
-
   const interval5 = setInterval(() => {
-    try { document.querySelector("path#space").classList.add('current') } catch (err) { }
+    try {
+      document.querySelector("path#space").classList.add("current");
+    } catch (err) {}
     setTimeout(() => {
-      try { document.querySelector("path#space").classList.remove('current') } catch (err) { }
-    }, 300)
-  }, 2000)
+      try {
+        document.querySelector("path#space").classList.remove("current");
+      } catch (err) {}
+    }, 300);
+  }, 2000);
 
-  return [interval1, interval2, interval3, interval4, interval5]
+  return [interval1, interval2, interval3, interval4, interval5];
 }

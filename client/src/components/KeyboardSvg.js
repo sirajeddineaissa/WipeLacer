@@ -1,17 +1,16 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router";
-import keyboardAnimations from '../functions/keyboardAnimations'
+import keyboardAnimations from "../functions/keyboardAnimations";
 
 const KeyboardSvg = () => {
   const location = useLocation();
   useEffect(() => {
     const intervals = keyboardAnimations();
     return () => {
-      intervals.forEach(interval => {
+      intervals.forEach((interval) => {
         clearInterval(interval);
-      })
-    }
-
+      });
+    };
   }, []);
 
   return (
