@@ -1,0 +1,158 @@
+@import "config";
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cairo";
+  background: rgb(62, 63, 64);
+  background: radial-gradient(
+    circle,
+    rgb(72, 73, 73) 1%,
+    rgba(40, 44, 52, 1) 100%
+  );
+  background-size: 200% 200%;
+  animation: background-move 25000ms ease-in-out infinite;
+  color: white;
+  line-height: 1.9em;
+}
+
+@keyframes background-move {
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: inherit;
+  border: none;
+  color: inherit;
+  &:focus {
+    outline: none;
+  }
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background: white;
+}
+
+.App {
+  min-height: 100vh;
+  & > div {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.contained {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+::selection {
+  color: blue;
+}
+
+button {
+  font-size: 1em;
+  padding: 10px 40px;
+  border: 3px solid white;
+  border-radius: 10px;
+  background-color: rgba($color: #c4c4c4, $alpha: 0.24);
+}
+
+.error {
+  color: red;
+  font-size: 0.8em;
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+  .transition-screen {
+    position: absolute;
+    z-index: 1005;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    pointer-events: none;
+    .part {
+      flex: 1;
+      background: white;
+      transform: scaleY(0);
+      transform-origin: top;
+      &.part1 {
+        transition-delay: 100ms;
+        background-color: lighten($background-color, 5);
+      }
+      &.part2 {
+        transition-delay: 200ms;
+        background-color: lighten($background-color, 10);
+      }
+      &.part3 {
+        border-right: 1px solid lighten($background-color, 20);
+        transition-delay: 300ms;
+        background-color: lighten($background-color, 20);
+      }
+    }
+  }
+}
+
+.page-enter {
+  opacity: 0;
+  animation: showSuddenly 1ms 1300ms forwards;
+  .transition-screen .part {
+    transform: none;
+  }
+}
+
+@keyframes showSuddenly {
+  100% {
+    opacity: 1;
+  }
+}
+
+.page-enter-done {
+  .transition-screen .part {
+    transform-origin: bottom;
+    transform: scaleY(0);
+    transition: transform 1000ms;
+  }
+}
+
+.page-exit {
+  .transform-screen .part {
+    transform: none;
+  }
+}
+.page-exit-active {
+  .transition-screen .part {
+    transform: none;
+    transition: transform 1000ms;
+  }
+}
+
+@import "./styles/HomePage";
+@import "./styles/keyboardStyle";
+@import "./styles/NavBar";
+@import "./styles/practice";
